@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Semantic HTML Refactor Exercise</title>
+
+<!-- Nikki Meza - IT 132 - Assignment 1 -->
+
+  <style>
+    /* Basic layout + visuals so structure is obvious*/
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.4;
+      margin: 0;
+      background: #f5f6f8;
+      color: #222;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+
+    /* Starter file uses divs; students will swap to semantic tags.
+       This CSS is written to still work after refactor. */
+    #header, header {
+      background: #1f2937;
+      color: #fff;
+      padding: 18px 20px;
+      border-radius: 10px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .tagline {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    #nav, nav {
+      margin-top: 12px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+
+    /* Inline vs block trap:
+       Links are inline by default; spacing/padding may feel "off" until students improve structure. */
+    #nav a, nav a {
+      text-decoration: none;
+      color: #2563eb;
+      margin-right: 10px;
+    }
+
+    #nav a:hover, nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Two-column layout */
+    .layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+      align-items: start;
+    }
+
+    #content, main {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 14px;
+    }
+
+    #sidebar, aside {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 14px;
+    }
+
+    .post, article {
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 12px;
+      background: #fbfbfc;
+    }
+
+    /* Heading styling works whether students convert div titles to h1/h2 */
+    h1 {
+      font-size: 22px;
+      margin: 0 0 6px 0;
+    }
+    h2 {
+      font-size: 18px;
+      margin: 0 0 6px 0;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 8px;
+    }
+
+    .box {
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 12px;
+      background: #fbfbfc;
+    }
+
+    #footer, footer {
+      margin-top: 14px;
+      padding: 12px 16px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      color: #6b7280;
+      font-size: 12px;
+    }
+
+    /* Make it readable on narrow screens */
+    @media (max-width: 800px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- I used <header> for the page banner because it contains the site title and tagline at the top of the page. -->
+    <header id="header">
+      <h1 class="logo">Hofstra Student Services</h1>
+      <p class="tagline">Updates, deadlines, and announcements</p>
+    </header>
+
+    <!-- I used <nav> for the menu links because it provides the main navigation (Home, Announcements, Events, Contact). -->
+    <nav id="nav" aria-label="Primary">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Announcements</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="layout">
+
+      <!-- I used <main> for the posts area because it contains the primary content users come to read (announcements and updates). It is important to let the end user see what they need to see easily.-->
+      <main id="content">
+
+        <!-- I used <article> for each post because each announcement is a self-contained piece of content with its own title and date. -->
+        <article class="post">
+          <h2>Registration Reminder</h2>
+          <p class="meta">Posted Feb 12</p>
+          <p class="text">
+            Course registration closes Friday. Meet with your advisor if you have holds.
+          </p>
+        </article>
+
+        <article class="post">
+          <h2>Library Workshop</h2>
+          <p class="meta">Posted Feb 10</p>
+          <p class="text">
+            A research skills workshop is available this week. Limited seats.
+          </p>
+        </article>
+
+      </main>
+
+      <!-- I used <aside> for the sidebar because it contains secondary information (related links and contact info) beside the main content. It's still good to show on a webpage for navigation! -->
+      <aside id="sidebar">
+
+        <div class="box">
+          <h3 class="title">Related Links</h3>
+          <ul>
+            <li>Advising Hours</li>
+            <li>Academic Calendar</li>
+            <li>IT Help Desk</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h3 class="title">Contact</h3>
+          <p>Email: studentservices@example.com</p>
+          <p>Phone: (555) 555-5555</p>
+        </div>
+
+      </aside>
+    </div>
+
+    <footer id="footer">
+      © Hofstra University
+    </footer>
+
+  </div>
+</body>
+</html>
